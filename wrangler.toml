@@ -1,0 +1,7 @@
+name = "dancecamp"
+compatibility_date = "2025-06-25"
+
+# Serve the static export (out/) as Cloudflare static assets.
+[assets]
+directory = "./out"
+not_found_handling = "404-page"
