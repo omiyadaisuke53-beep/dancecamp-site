@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Fully static site → export to `out/` for Cloudflare Pages (static hosting).
+  output: "export",
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "picsum.photos" },
-      { protocol: "https", hostname: "fastly.picsum.photos" },
-    ],
+    // Static export can't use the Next image optimizer; serve images as-is.
+    unoptimized: true,
   },
 };
 
