@@ -8,7 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useT } from "@/components/LanguageProvider";
-import { HERO } from "@/lib/content";
+import { HERO, HERO_VIDEO_URL } from "@/lib/content";
 
 // How much scroll (px) the video takes to fully "iris open".
 const SCROLL_HEIGHT = 1500;
@@ -52,7 +52,6 @@ export default function HeroSection() {
               ref={videoRef}
               style={{ scale }}
               className="h-full w-full object-cover"
-              src="/videos/hero.mp4"
               poster="/images/hero-poster.jpg"
               autoPlay
               muted
@@ -62,7 +61,10 @@ export default function HeroSection() {
               role="presentation"
               aria-hidden="true"
               disablePictureInPicture
-            />
+            >
+              {HERO_VIDEO_URL && <source src={HERO_VIDEO_URL} type="video/mp4" />}
+              <source src="/videos/hero.mp4" type="video/mp4" />
+            </motion.video>
             {/* Darken for text legibility — heavier toward the bottom-left */}
             <div className="absolute inset-0 bg-ink/35" />
             <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/15 to-transparent" />
