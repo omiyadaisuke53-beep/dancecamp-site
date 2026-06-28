@@ -102,6 +102,7 @@ export default function TornadoSmallPage() {
               height: '100%',
               objectFit: 'contain',
               background: '#050505',
+              pointerEvents: 'none',
             }}
           />
 
