@@ -63,7 +63,7 @@ export default function Nav({ solid = false }) {
               className={`h-12 w-auto md:h-14 ${dark ? "invert" : ""}`}
             />
             <span
-              className={`font-display text-xl font-semibold tracking-tight transition-colors md:text-2xl ${
+              className={`font-display text-2xl font-semibold tracking-tight transition-colors md:text-3xl ${
                 dark ? "text-bone" : "text-forest"
               }`}
             >
