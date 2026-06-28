@@ -43,9 +43,11 @@ export default function HeroSection() {
     <section id="top" className="relative w-full">
       <div style={{ height: `calc(${SCROLL_HEIGHT}px + 100vh)` }} className="relative w-full">
         <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-ink">
-          {/* Expanding video (clip-path driven by scroll position) */}
+          {/* Expanding video (clip-path driven by scroll position).
+              pointer-events-none so the full-screen video doesn't block
+              touch-scrolling on mobile. */}
           <motion.div
-            className="absolute inset-0"
+            className="pointer-events-none absolute inset-0"
             style={{ clipPath, willChange: "clip-path" }}
           >
             <motion.video
