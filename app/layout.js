@@ -49,11 +49,11 @@ const notoSerifJP = Noto_Serif_JP({
 
 export const metadata = {
   metadataBase: new URL("https://dance-camp.example.com"),
-  title: "DANCE CAMP — Move. Breathe. Belong. | ダンスリトリート 2026",
+  title: "Heart, dance, return to nature.",
   description:
     "A four-day dance retreat in the forest. Movement, music and stillness — where dance becomes a way of living. 森の中の4日間のダンスリトリート。",
   openGraph: {
-    title: "DANCE CAMP — Move. Breathe. Belong.",
+    title: "Heart, dance, return to nature.",
     description:
       "A four-day dance retreat in the forest. Movement, music and stillness.",
     type: "website",
