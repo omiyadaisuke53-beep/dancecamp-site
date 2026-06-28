@@ -397,14 +397,36 @@ export function Register() {
   const { t, lang } = useT();
   const [form, setForm] = useState({ lastName: "", firstName: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.message) return;
-    // Placeholder: wire this up to your email service (Resend, Formspree, etc.).
-    setSent(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/cavamm77@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: `${form.lastName} ${form.firstName}`.trim(),
+          email: form.email,
+          message: form.message,
+          _subject: "Dance Camp — お問い合わせ",
+          _template: "table",
+        }),
+      });
+      const data = await res.json();
+      if (data.success === "true" || data.success === true) setSent(true);
+      else setError(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -463,11 +485,17 @@ export function Register() {
                   </label>
                   <textarea id="message" rows={5} required value={form.message} onChange={update("message")} className={`${inputClass} resize-none`} />
                 </div>
+                {error && (
+                  <p className={`text-sm text-coral ${lang === "ja" ? "font-jp" : ""}`}>
+                    {t({ en: "Something went wrong. Please try again.", ja: "送信に失敗しました。もう一度お試しください。" })}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-coral px-8 py-3.5 font-medium text-bone transition-transform duration-300 ease-soft hover:scale-[1.03]"
+                  disabled={sending}
+                  className="mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-coral px-8 py-3.5 font-medium text-bone transition-transform duration-300 ease-soft hover:scale-[1.03] disabled:opacity-60"
                 >
-                  {t(REGISTER.form.send)}
+                  {sending ? t({ en: "Sending…", ja: "送信中…" }) : t(REGISTER.form.send)}
                   <span aria-hidden="true">→</span>
                 </button>
               </form>
