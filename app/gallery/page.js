@@ -3,6 +3,12 @@ import Nav from "@/components/Nav";
 import { Footer } from "@/components/sections";
 import { galleries } from "@/lib/galleries";
 
+export const metadata = {
+  title: "Gallery",
+  description:
+    "Dance Camp の記録 — 風の音、土の感触、響き合う身体。Dance Retreat 2023 / Dance Camp 2024・2025 の写真ギャラリー。",
+};
+
 export default function GalleryIndexPage() {
   return (
     <>

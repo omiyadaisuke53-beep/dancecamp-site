@@ -47,17 +47,52 @@ const notoSerifJP = Noto_Serif_JP({
   display: "swap",
 });
 
+const SITE_URL = "https://mumudancecamp.com";
+const OG_DESC =
+  "長野・松本 四賀で開催するダンスリトリート「Dance Camp」。自然の中で身体をひらき、感覚を取り戻す3日間。";
+
 export const metadata = {
-  metadataBase: new URL("https://dance-camp.example.com"),
-  title: "Heart, dance, return to nature.",
-  description:
-    "A four-day dance retreat in the forest. Movement, music and stillness — where dance becomes a way of living. 森の中の4日間のダンスリトリート。",
-  openGraph: {
-    title: "Heart, dance, return to nature.",
-    description:
-      "A four-day dance retreat in the forest. Movement, music and stillness.",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Heart, dance, return to nature.",
+    template: "%s | Dance Camp",
   },
+  description:
+    OG_DESC +
+    " A dance retreat in the forests of Matsumoto, Nagano — where movement becomes a way of living.",
+  keywords: [
+    "Dance Camp",
+    "ダンスキャンプ",
+    "ダンスリトリート",
+    "リトリート",
+    "コンテンポラリーダンス",
+    "松本",
+    "四賀",
+    "長野",
+    "自然",
+    "ワークショップ",
+    "dance retreat",
+    "Matsumoto",
+    "Nagano",
+  ],
+  authors: [{ name: "Creative Art Village - Aida" }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "Dance Camp",
+    locale: "ja_JP",
+    url: SITE_URL,
+    title: "Dance Camp — Heart, dance, return to nature.",
+    description: OG_DESC,
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Dance Camp" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dance Camp — Heart, dance, return to nature.",
+    description: OG_DESC,
+    images: ["/og.jpg"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport = {

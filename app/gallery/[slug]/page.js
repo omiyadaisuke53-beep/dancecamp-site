@@ -14,7 +14,10 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const g = getGallery(params.slug);
   if (!g) return {};
-  return { title: `${g.title} ${g.year} — Dance Camp Gallery` };
+  return {
+    title: `${g.title} ${g.year}`,
+    description: `${g.title} ${g.year} の写真ギャラリー — Dance Camp の記録。`,
+  };
 }
 
 export default function CollectionPage({ params }) {
