@@ -9,7 +9,6 @@ import {
 } from "@/components/HoverSlider";
 import { useT } from "@/components/LanguageProvider";
 import { galleries } from "@/lib/galleries";
-import { MOVIE_YT_ID } from "@/lib/content";
 
 const items = [
   ...galleries.map((g) => ({
@@ -19,7 +18,7 @@ const items = [
   })),
   {
     label: "Movie",
-    img: `https://img.youtube.com/vi/${MOVIE_YT_ID}/hqdefault.jpg`,
+    img: "/images/movie-thumb.jpg",
     href: "/gallery",
   },
 ];
