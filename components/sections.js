@@ -58,7 +58,9 @@ export function About() {
           {/* Concept text — left, nudged right */}
           <div className="lg:col-span-7 lg:pl-16">
             <Reveal>
-              <p className="label text-forest/50">{t(ABOUT.label)}</p>
+              <p className="font-mono text-sm uppercase tracking-[0.22em] text-coral md:text-base">
+                {t(ABOUT.label)}
+              </p>
             </Reveal>
             <Reveal delay={0.05}>
               <h2
@@ -80,8 +82,8 @@ export function About() {
             </Reveal>
           </div>
 
-          {/* Interactive photo roll — right column, nudged left */}
-          <div className="flex justify-center lg:col-span-5 lg:justify-start">
+          {/* Interactive photo roll — centered in its column (sits just right of center) */}
+          <div className="flex justify-center lg:col-span-5 lg:justify-center">
             <Reveal delay={0.1}>
               <PhotoStack />
             </Reveal>

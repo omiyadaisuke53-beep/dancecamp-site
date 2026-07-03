@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { Footer } from "@/components/sections";
 import { galleries } from "@/lib/galleries";
+import MovieEmbed from "@/components/MovieEmbed";
 
 export const metadata = {
   title: "Gallery",
@@ -20,7 +21,21 @@ export default function GalleryIndexPage() {
             {"風の音、土の感触、響き合う身体。\nDance Campで重ねてきた記憶の断片たち。"}
           </p>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Top: movie */}
+          <div className="mt-14">
+            <p className="font-mono text-sm uppercase tracking-[0.22em] text-coral md:text-base">
+              Movie
+            </p>
+            <div className="mt-6">
+              <MovieEmbed />
+            </div>
+          </div>
+
+          {/* Bottom: photos */}
+          <p className="mt-20 font-mono text-sm uppercase tracking-[0.22em] text-coral md:mt-28 md:text-base">
+            Photos
+          </p>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {galleries.map((g) => (
               <Link key={g.slug} href={`/gallery/${g.slug}`} className="group block">
                 <div className="overflow-hidden rounded-xl bg-forest/5 ring-1 ring-forest/10">

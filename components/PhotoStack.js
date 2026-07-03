@@ -56,11 +56,11 @@ export default function PhotoStack() {
     if (diff < -total / 2) diff += total;
 
     if (diff === 0) return { y: 0, scale: 1, opacity: 1, zIndex: 5, rotateX: 0 };
-    if (diff === -1) return { y: -108, scale: 0.86, opacity: 0.55, zIndex: 4, rotateX: 6 };
-    if (diff === -2) return { y: -190, scale: 0.74, opacity: 0.28, zIndex: 3, rotateX: 10 };
-    if (diff === 1) return { y: 108, scale: 0.86, opacity: 0.55, zIndex: 4, rotateX: -6 };
-    if (diff === 2) return { y: 190, scale: 0.74, opacity: 0.28, zIndex: 3, rotateX: -10 };
-    return { y: diff > 0 ? 305 : -305, scale: 0.65, opacity: 0, zIndex: 0, rotateX: diff > 0 ? -14 : 14 };
+    if (diff === -1) return { y: -95, scale: 0.86, opacity: 0.55, zIndex: 4, rotateX: 6 };
+    if (diff === -2) return { y: -165, scale: 0.74, opacity: 0.28, zIndex: 3, rotateX: 10 };
+    if (diff === 1) return { y: 95, scale: 0.86, opacity: 0.55, zIndex: 4, rotateX: -6 };
+    if (diff === 2) return { y: 165, scale: 0.74, opacity: 0.28, zIndex: 3, rotateX: -10 };
+    return { y: diff > 0 ? 270 : -270, scale: 0.65, opacity: 0, zIndex: 0, rotateX: diff > 0 ? -14 : 14 };
   };
 
   const isVisible = (index) => {
@@ -78,7 +78,7 @@ export default function PhotoStack() {
       onMouseLeave={() => setPaused(false)}
     >
       <div
-        className="relative flex h-[520px] w-[310px] items-center justify-center sm:w-[340px]"
+        className="relative flex h-[460px] w-[280px] items-center justify-center sm:w-[300px]"
         style={{ perspective: "1000px" }}
       >
         {images.map((src, index) => {
@@ -105,7 +105,7 @@ export default function PhotoStack() {
               onDragEnd={handleDragEnd}
               style={{ transformStyle: "preserve-3d", zIndex: style.zIndex }}
             >
-              <div className="relative h-[420px] w-[280px] overflow-hidden rounded-2xl bg-forest shadow-xl ring-1 ring-forest/10 sm:w-[300px]">
+              <div className="relative h-[370px] w-[250px] overflow-hidden rounded-2xl bg-forest shadow-xl ring-1 ring-forest/10 sm:w-[270px]">
                 <img
                   src={src}
                   alt=""

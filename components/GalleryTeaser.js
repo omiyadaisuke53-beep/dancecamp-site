@@ -9,6 +9,7 @@ import {
 } from "@/components/HoverSlider";
 import { useT } from "@/components/LanguageProvider";
 import { galleries } from "@/lib/galleries";
+import MovieEmbed from "@/components/MovieEmbed";
 
 const items = galleries.map((g) => ({
   label: `${g.title} ${g.year}`,
@@ -26,9 +27,11 @@ export default function GalleryTeaser() {
         <div className="absolute inset-0 bg-gradient-to-br from-ink/90 via-ink/80 to-forest/75" />
       </div>
       <HoverSlider className="relative z-10 mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-36">
-        <p className="label text-coral">Gallery</p>
+        <p className="font-mono text-sm uppercase tracking-[0.22em] text-coral md:text-base">
+          Gallery
+        </p>
 
-        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Hover text list */}
           <div className="flex flex-col items-start gap-2">
             {items.map((it, i) => (
@@ -61,6 +64,16 @@ export default function GalleryTeaser() {
                 />
               ))}
             </HoverSliderImageWrap>
+          </div>
+        </div>
+
+        {/* Movie */}
+        <div className="mt-20 md:mt-28">
+          <p className="font-mono text-sm uppercase tracking-[0.22em] text-coral md:text-base">
+            Movie
+          </p>
+          <div className="mt-6">
+            <MovieEmbed />
           </div>
         </div>
       </HoverSlider>
