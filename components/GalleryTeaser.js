@@ -9,13 +9,20 @@ import {
 } from "@/components/HoverSlider";
 import { useT } from "@/components/LanguageProvider";
 import { galleries } from "@/lib/galleries";
-import MovieEmbed from "@/components/MovieEmbed";
+import { MOVIE_YT_ID } from "@/lib/content";
 
-const items = galleries.map((g) => ({
-  label: `${g.title} ${g.year}`,
-  img: g.images[0],
-  href: `/gallery/${g.slug}`,
-}));
+const items = [
+  ...galleries.map((g) => ({
+    label: `${g.title} ${g.year}`,
+    img: g.images[0],
+    href: `/gallery/${g.slug}`,
+  })),
+  {
+    label: "Movie",
+    img: `https://img.youtube.com/vi/${MOVIE_YT_ID}/hqdefault.jpg`,
+    href: "/gallery",
+  },
+];
 
 export default function GalleryTeaser() {
   const { t } = useT();
@@ -67,15 +74,6 @@ export default function GalleryTeaser() {
           </div>
         </div>
 
-        {/* Movie */}
-        <div className="mt-20 md:mt-28">
-          <p className="font-mono text-sm uppercase tracking-[0.22em] text-coral md:text-base">
-            Movie
-          </p>
-          <div className="mt-6">
-            <MovieEmbed />
-          </div>
-        </div>
       </HoverSlider>
     </section>
   );
