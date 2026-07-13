@@ -165,16 +165,46 @@ export function Faculty() {
         </Reveal>
       </div>
 
-      <Reveal delay={0.15}>
-        <div className="mt-16 flex flex-col items-center justify-center rounded-2xl border border-forest/15 bg-paper py-24 text-center md:mt-20 md:py-32">
-          <p className={`text-4xl tracking-tight md:text-6xl ${lang === "ja" ? "font-jpserif" : "font-display"}`}>
-            {t(FACULTY.comingSoon)}
-          </p>
-          <p className={`mt-5 max-w-sm text-forest/60 ${lang === "ja" ? "font-jp" : ""}`}>
-            {t(FACULTY.comingSoonNote)}
-          </p>
-        </div>
-      </Reveal>
+      <div className="mt-16 flex flex-col gap-20 md:mt-24 md:gap-28">
+        {FACULTY.people.map((p, i) => {
+          const jpName = /[^\u0000-\u007F]/.test(p.name);
+          return (
+            <Reveal key={p.name} delay={0.05}>
+              <article className="grid items-center gap-8 md:grid-cols-12 md:gap-14">
+                {/* Photo */}
+                <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                  <div
+                    className="overflow-hidden rounded-2xl bg-forest/5 ring-1 ring-forest/10"
+                    style={{ aspectRatio: "3 / 4" }}
+                  >
+                    <img
+                      src={p.img}
+                      alt={p.romaji || p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+                {/* Text */}
+                <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                  <h3 className={`text-3xl tracking-tight md:text-5xl ${jpName ? "font-jpserif" : "font-display"}`}>
+                    {p.name}
+                  </h3>
+                  {p.romaji && (
+                    <p className="mt-1 font-mono text-sm uppercase tracking-[0.2em] text-forest/45">
+                      {p.romaji}
+                    </p>
+                  )}
+                  <p className="label mt-3 text-coral">{t(p.role)}</p>
+                  <p className={`mt-6 whitespace-pre-line leading-relaxed text-forest/75 ${lang === "ja" ? "font-jp" : ""}`}>
+                    {t(p.bio)}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
+      </div>
     </section>
   );
 }
